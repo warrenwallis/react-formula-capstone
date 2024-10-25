@@ -8,7 +8,7 @@ const FormContainer = (props) => {
                 <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
             </div>
             <div className="flex flex-col items-center justify-center h-screen bg-emerald-50 flex-1">
-                <div className="flex flex-col justify-center items-center my-8">
+                <div className="flex flex-col justify-center items-center mb-6">
                     <img
                         className="w-16 mb-2"
                         src="https://static-task-assets.react-formula.com/capstone_logo_dark.png"
