@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import clsx from "clsx";
 
 const POT_COLORS = {
@@ -18,12 +19,16 @@ const PlantItem = (props) => {
 	const { plant } = props;
 	const [imageIdx, setImageIdx] = useState(() => getRandomElement(plant.images));
 
+    console.log(plant);
+
 	return (
 		<div className="w-72 font-lato text-base flex flex-col my-4 mx-2">
-			<img
-				className="rounded-lg h-80 object-cover"
-				src={plant.images[imageIdx].src}
-			/>
+            <Link to={'/plants/' + plant.id}>
+                <img
+                    className="rounded-lg h-80 w-full object-cover"
+                    src={plant.images[imageIdx].src}
+                />
+            </Link>
 			<div className="flex justify-between mt-4">
 				<div className="text-lg">{plant.name}</div>
 				<div>${plant.price}</div>
