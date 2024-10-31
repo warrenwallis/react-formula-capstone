@@ -21,9 +21,7 @@ const PlantShowPage = () => {
 			setPlant(data);
             setIsLoading(false);
 		})();
-	}, []);
-
-	console.log(plant);
+	}, [plantId]);
 
 	return (
 		<RedirectToSignInIfSignedOut>
