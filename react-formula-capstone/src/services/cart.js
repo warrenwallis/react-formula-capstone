@@ -6,3 +6,7 @@ export const addPlantToCart = ({ plantId, quantity, potColor }) => {
         pot_color : potColor
     });
 };
+
+export const getCart = () => {
+    return apiFetch("GET", '/cart');
+};

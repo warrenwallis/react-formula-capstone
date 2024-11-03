@@ -9,8 +9,6 @@ const PlantPurchaseOptions = (props) => {
 	const [quantity, setQuantity] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log(plant);
-
 	return (
 		<div className="my-8">
 			<div className="flex text-2xl text-emerald-700">

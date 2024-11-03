@@ -6,9 +6,7 @@ import { POT_COLORS, getRandomElement } from "shared-components/util";
 const PlantItem = (props) => {
 	const { plant } = props;
 	const [imageIdx, setImageIdx] = useState(() => getRandomElement(plant.images));
-
-    console.log(plant);
-
+	
 	return (
 		<div className="w-72 font-lato text-base flex flex-col my-4 mx-2">
             <Link to={'/plants/' + plant.id}>
