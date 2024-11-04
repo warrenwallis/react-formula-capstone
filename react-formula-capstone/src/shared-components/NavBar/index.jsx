@@ -2,10 +2,13 @@ import { useContext, useState } from "react";
 import SessionContext from "contexts/SessionContext";
 import { Link } from "react-router-dom";
 import CartModal from "./modals/CartModal";
+import ModalWrapper from "./modals/ModalWrapper";
+import MobileModalMenu from "./modals/MobileModalMenu";
 
 const NavBar = () => {
 	const [userMenuOpen, setUserMenuOpen] = useState(false);
 	const [cartModalOpen, setCartModalOpen] = useState(false);
+	const [mobileModalOpen, setMobileModalOpen] = useState(false);
 	const { username, signOut } = useContext(SessionContext);
 
 	return (
@@ -24,7 +27,7 @@ const NavBar = () => {
 							Rica's Plants
 						</div>
 					</Link>
-					<div className="text-emerald-200 text-base flex-1 flex justify-end">
+					<div className="text-emerald-200 text-base flex-1 hidden sm:flex justify-end">
 						<div className="relative w-32 flex justify-end mr-6">
 							<button
 								className="flex items-center pl-3"
@@ -37,7 +40,10 @@ const NavBar = () => {
 							</button>
 							{userMenuOpen && (
 								<div className="absolute top-7 right-0 bg-white rounded-lg shadow-md">
-									<button className="text-slate-500 hover:text-emerald-700 px-3 py-3" onClick={signOut}>
+									<button
+										className="text-slate-500 hover:text-emerald-700 px-3 py-3"
+										onClick={signOut}
+									>
 										<i className="fa-solid fa-right-from-bracket mr-2"></i>
 										sign out
 									</button>
@@ -45,15 +51,38 @@ const NavBar = () => {
 							)}
 						</div>
 						<div>
-							<button className="flex items-center pl-3" onClick={() => setCartModalOpen(true)}>
+							<button
+								className="flex items-center pl-3"
+								onClick={() => setCartModalOpen(true)}
+							>
 								<i className="fa-solid fa-cart-shopping mr-2 text-lg"></i>
 								Cart
 							</button>
 						</div>
 					</div>
+					<button
+						className="sm:hidden"
+						onClick={() => setMobileModalOpen(true)}
+					>
+						<i className="fa-solid fa-bars"></i>
+					</button>
 				</div>
 			</nav>
-			{cartModalOpen && <CartModal setCartModalOpen={setCartModalOpen} />}
+			<ModalWrapper
+				isOpen={cartModalOpen}
+				onCloseClick={() => setCartModalOpen(false)}
+			>
+				<CartModal setCartModalOpen={setCartModalOpen} />
+			</ModalWrapper>
+			<ModalWrapper
+				isOpen={mobileModalOpen}
+				onCloseClick={() => setMobileModalOpen(false)}
+			>
+				<MobileModalMenu onCartOpenClick={() => {
+					setCartModalOpen(true);
+					setMobileModalOpen(false);
+				}} />
+			</ModalWrapper>
 		</>
 	);
 };
