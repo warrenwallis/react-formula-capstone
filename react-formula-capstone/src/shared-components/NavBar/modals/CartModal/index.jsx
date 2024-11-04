@@ -63,10 +63,15 @@ const CartModal = (props) => {
 										<div className="text-slate-600 ml-1">${subtotal}</div>
 									</div>
 								</div>
-								<div className="text-2xl text-emerald-50 bg-emerald-700 rounded-full text-center p-4 font-lato">
+								<button
+									className="text-2xl text-emerald-50 bg-emerald-700 rounded-full text-center p-4 font-lato w-full"
+									onClick={() =>
+										alert("this app is not a real plant selling site!")
+									}
+								>
 									Checkout
 									<i className="fa-solid fa-arrow-right ml-2"></i>
-								</div>
+								</button>
 							</div>
 						</div>
 					)}
