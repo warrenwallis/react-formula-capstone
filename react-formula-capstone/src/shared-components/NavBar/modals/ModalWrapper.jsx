@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const ModalWrapper = (props) => {
 	const { children, isOpen, onCloseClick } = props;
-	const backgroundDivRef = useRef();
+	const backgroundDivRef = useRef(null);
 
 	if (!isOpen) {
 		return null;
